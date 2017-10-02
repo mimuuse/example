@@ -1,0 +1,36 @@
+﻿<div class="bg-info p-a-1 m-b-1">Model Data: {{jsonProduct}}</div>
+<div class="col-xs-4 p-a-1">
+<div class="form-group">
+    <label>Name</label>
+    <input class="form-control" [(ngModel)]="newProduct.name" />
+</div>
+<div class="form-group">
+    <label>Category</label>
+    <input class="form-control" [(ngModel)]="newProduct.category" />
+</div>
+<div class="form-group">
+    <label>Price</label>
+    <input class="form-control" [(ngModel)]="newProduct.price" />
+</div>
+<button class="btn btn-primary" (click)="addProduct(newProduct)">Create</button>
+<button class="btn btn-warning" (click)="updateProduct(newProduct)">Update</button>
+</div>
+<div class="col-xs-8 p-a-1">
+<table class="table table-sm table-bordered m-t-1">
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+    </tr>
+    <tr *ngFor="let item of getProducts(); let i = index"
+    (click)=selectProduct(item.id)>
+        <td>{{i + 1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.price}}</td>
+        <td><button class="btn btn-danger" (click)="deleteProduct(item.id)">Delete</button>
+</td>
+    </tr>
+</table>
+</div>
